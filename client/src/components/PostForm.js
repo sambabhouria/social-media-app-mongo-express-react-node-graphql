@@ -23,6 +23,7 @@ function PostForm() {
       })
       /**
        * Cannot assign to read only property 'getPosts' of object '#<Object>'
+       * https://stackoverflow.com/questions/64396559/unhandled-rejection-error-cannot-assign-to-read-only-property-getposts-of-o
        */
       // data.getPosts = [result.data.createPost, ...data.getPosts]
       // proxy.writeQuery({ query: FETCH_POSTS_QUERY, data })
