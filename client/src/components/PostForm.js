@@ -15,8 +15,17 @@ function PostForm() {
       const data = proxy.readQuery({
         query: FETCH_POSTS_QUERY,
       })
-      data.getPosts = [result.data.createPost, ...data.getPosts]
-      proxy.writeQuery({ query: FETCH_POSTS_QUERY, data })
+      proxy.writeQuery({
+        query: FETCH_POSTS_QUERY,
+        data: {
+          getPosts: [result.data.createPost, ...data.getPosts],
+        },
+      })
+      /**
+       * Cannot assign to read only property 'getPosts' of object '#<Object>'
+       */
+      // data.getPosts = [result.data.createPost, ...data.getPosts]
+      // proxy.writeQuery({ query: FETCH_POSTS_QUERY, data })
       values.body = ''
     },
   })

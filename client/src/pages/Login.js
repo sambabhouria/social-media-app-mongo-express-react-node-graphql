@@ -25,7 +25,6 @@ function Login() {
     // },
     onError(err) {
       // setErrors(err.graphQLErrors[0].extensions.exception.errors)
-      // setErrors(err.graphQLErrors[0].message)
       setErrors(err.graphQLErrors[0].extensions.errors)
     },
     variables: values,
