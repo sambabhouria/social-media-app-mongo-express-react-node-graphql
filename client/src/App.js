@@ -1,8 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { AuthProvider } from './context/auth'
-// import AuthRoute from './util/AuthRoute'
-
 import { Container } from 'semantic-ui-react'
 
 import 'semantic-ui-css/semantic.min.css'
@@ -26,8 +24,6 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
             </Route>
-            {/* <AuthRoute path="/login" element={<Login />} />
-            <AuthRoute path="/register" element={<Register />} /> */}
           </Routes>
         </Container>
       </Router>
