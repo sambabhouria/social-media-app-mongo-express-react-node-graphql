@@ -16,24 +16,24 @@ import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
 // })
 
 //  InMemoryCache : add client without reload page
-const cache = new InMemoryCache({
-  typePolicies: {
-    Query: {
-      fields: {
-        clients: {
-          merge(existing, incoming) {
-            return incoming
-          },
-        },
-        projects: {
-          merge(existing, incoming) {
-            return incoming
-          },
-        },
-      },
-    },
-  },
-})
+// const cache = new InMemoryCache({
+//   typePolicies: {
+//     Query: {
+//       fields: {
+//         clients: {
+//           merge(existing, incoming) {
+//             return incoming
+//           },
+//         },
+//         projects: {
+//           merge(existing, incoming) {
+//             return incoming
+//           },
+//         },
+//       },
+//     },
+//   },
+// })
 
 const client = new ApolloClient({
   uri: process.env.NODE_ENV === 'development' ? 'http://localhost:4000' : '/',
