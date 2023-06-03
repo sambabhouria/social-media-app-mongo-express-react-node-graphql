@@ -27,7 +27,8 @@ function Register() {
       navigate('/')
     },
     onError(err) {
-      setErrors(err.graphQLErrors[0].extensions.exception.errors)
+      // setErrors(err.graphQLErrors[0].extensions.exception.errors)
+      setErrors(err.graphQLErrors[0].extensions.errors)
     },
     variables: values,
   })
@@ -82,6 +83,7 @@ function Register() {
       </Form>
       {Object.keys(errors).length > 0 && (
         <div className="ui error message">
+          {/* {errors} */}
           <ul className="list">
             {Object.values(errors).map((value) => (
               <li key={value}>{value}</li>
