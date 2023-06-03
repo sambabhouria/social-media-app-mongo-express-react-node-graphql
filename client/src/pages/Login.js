@@ -9,7 +9,6 @@ import { useForm } from '../util/hooks'
 
 function Login() {
   const [errors, setErrors] = useState({})
-  console.log('🚀 ~ file: Login.js:12 ~ Login ~ errors:', errors)
   const context = useContext(AuthContext)
   const navigate = useNavigate()
   const { onChange, onSubmit, values } = useForm(loginUserCallback, {
