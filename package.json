@@ -1,0 +1,15 @@
+{
+  "name": "-social-media-app",
+  "version": "1.0.0",
+  "description": "A social media app using MongoDB, Express, Node, React, GraphQL, and Node. In this repos how to implement a GraphQL server that uses Node and Express to communicate to a MongoDB Database and fetch and persist data to a social media app back-end.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix backend\"  \"npm run dev --prefix frontend\" ",
+    "build": "cd server && npm install && cd ../client && npm install && npm run build",
+    "start": "TG_ALLOW_MIXED=ALLOW  node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
