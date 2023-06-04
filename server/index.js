@@ -6,7 +6,7 @@ const typeDefs = require('./graphql/typeDefs')
 const resolvers = require('./graphql/resolvers')
 const { MONGODB } = require('./config.js')
 require('dotenv').config()
-const port = process.env.PORT || 4000
+const port = Number.parseInt(process.env.PORT) || 4000
 const pubsub = new PubSub()
 
 const server = new ApolloServer({
