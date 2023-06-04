@@ -11,6 +11,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import ProtectedRoute from './util/ProtectedRoute'
+import SinglePost from './pages/SinglePost'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
             </Route>
+            <Route path="/posts/:postId" element={<SinglePost />} />
           </Routes>
         </Container>
       </Router>

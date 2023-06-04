@@ -31,8 +31,6 @@ function PostForm() {
     },
   })
 
-  console.log('🚀 ~ file: PostForm.js:23 ~ PostForm ~ error:', error)
-
   function createPostCallback() {
     createPost()
   }

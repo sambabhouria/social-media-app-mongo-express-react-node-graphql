@@ -24,5 +24,5 @@ mongoose
     // });
   })
   .then((res) => {
-    console.log(`🚀 Server running at ${res.url}`)
+    console.log(`🏆🏆🚀 Server running at ${res.url}`)
   })
