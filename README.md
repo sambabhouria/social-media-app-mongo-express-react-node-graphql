@@ -5,6 +5,14 @@ In this repos how to implement a GraphQL server that uses Node and Express to co
 
 👉 🌏 ![demo-on-render.com] :()
 
+# Add middleware link for deploy :
+
+https://www.apollographql.com/docs/apollo-server/v2/integrations/middleware/
+
+# Migration :
+
+https://www.apollographql.com/docs/apollo-server/migration/
+
 ⭐️ Contents ⭐️
 
 ⌨️ Setting Up Database & Server

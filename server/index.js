@@ -1,32 +1,43 @@
-const { ApolloServer } = require('apollo-server')
+const express = require('express')
 const { PubSub } = require('graphql-subscriptions')
+const path = require('path')
 const mongoose = require('mongoose')
-
+const { ApolloServer } = require('apollo-server-express')
+require('dotenv').config()
 const typeDefs = require('./graphql/typeDefs')
 const resolvers = require('./graphql/resolvers')
-// const { MONGODB } = require('./config.js')
-require('dotenv').config()
-const port = Number.parseInt(process.env.PORT) || 4000
-const pubsub = new PubSub()
 
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  context: ({ req }) => ({ req, pubsub }),
-})
+async function startApolloServer() {
+  const app = express()
+  const pubsub = new PubSub()
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: ({ req }) => ({ req, pubsub }),
+    // context: async ({ req }) => ({ token: req.headers.token }),
+  })
 
-mongoose
-  .connect(process.env.MONGO_URI, { useNewUrlParser: true })
-  .then(() => {
-    console.log('MongoDB Connected')
-    return server.listen({ port })
-    // server.listen().then(({ url }) => {
-    //   console.log(`🚀  Server ready at ${url}`);
-    // });
-  })
-  .then((res) => {
-    console.log(`🏆🏆🚀 Server running at ${res.url}`)
-  })
-  .catch((err) => {
-    console.error(err)
-  })
+  await server.start()
+
+  mongoose
+    .connect(process.env.MONGO_URI, { useNewUrlParser: true })
+    .then(() => {
+      console.log('🏆🏆🚀 MongoDB Connected🏆🏆🚀 ')
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+
+  server.applyMiddleware({ app })
+
+  app.use(express.static(path.join(__dirname, '../client', 'build')))
+  app.get('*', (req, res) =>
+    res.sendFile(path.join(__dirname, '../client', 'build', 'index.html'))
+  )
+
+  await new Promise((resolve) => app.listen({ port: 4000 }, resolve))
+  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+  return { server, app }
+}
+
+startApolloServer()
